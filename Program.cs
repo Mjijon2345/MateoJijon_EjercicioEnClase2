@@ -1,4 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MateoJijon_EjercicioEnClase2.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<MateoJijon_EjercicioEnClase2Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MateoJijon_EjercicioEnClase2Context") ?? throw new InvalidOperationException("Connection string 'MateoJijon_EjercicioEnClase2Context' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
